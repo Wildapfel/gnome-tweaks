@@ -1,0 +1,8857 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Instructions and user guides for the CSC supercomputers, cloud services, storage and software, including FAQ and tutorials">
+      
+      
+      
+        <link rel="canonical" href="https://docs.csc.fi/data/moving/scp/">
+      
+      
+        <link rel="prev" href="../">
+      
+      
+        <link rel="next" href="../web-interface/">
+      
+      
+      <link rel="icon" href="../../../assets/images/logo.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.9">
+    
+    
+      
+        <title>Copying files using scp - Docs CSC</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.4af4bdda.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+  
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+  
+  <style>:root{--md-admonition-icon--info:url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20d%3D%22M13%209h-2V7h2m0%2010h-2v-6h2m-1-9A10%2010%200%200%200%202%2012a10%2010%200%200%200%2010%2010%2010%2010%200%200%200%2010-10A10%2010%200%200%200%2012%202%22/%3E%3C/svg%3E');--md-admonition-icon--success:url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20d%3D%22M12%202C6.5%202%202%206.5%202%2012s4.5%2010%2010%2010%2010-4.5%2010-10S17.5%202%2012%202m-2%2015-5-5%201.41-1.41L10%2014.17l7.59-7.59L19%208z%22/%3E%3C/svg%3E');--md-admonition-icon--warning:url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20d%3D%22M13%2014h-2V9h2m0%209h-2v-2h2M1%2021h22L12%202z%22/%3E%3C/svg%3E');}</style>
+
+
+
+    
+    
+      
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  <script>
+  const MATOMO_SITE_ID = "1"
+  const MATOMO_URL = "mwa-acf.2.rahtiapp.fi"
+
+  if (MATOMO_SITE_ID && MATOMO_URL) {
+    var _paq = window._paq = window._paq || [];
+    /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+    _paq.push(['disableCookies']);
+    _paq.push(['trackPageView']);
+    _paq.push(['enableLinkTracking']);
+    (function() {
+      var u=`https://${MATOMO_URL}/`;
+      _paq.push(['setTrackerUrl', u+'matomo.php']);
+      _paq.push(['setSiteId', MATOMO_SITE_ID]);
+      var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+      g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+    })();
+  }
+</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="csc" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#copying-files-using-scp" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+  <div class="pre-header">
+  <ul>
+    
+    <li>
+      <a href="https://research.csc.fi/" target="_blank">Services for research</a>
+    </li>
+    <li class="current-site">
+      <a href="https://docs.csc.fi/">Docs CSC <span class="hidden">- User guides</span></a>
+    </li>
+    <li>
+      <a href="https://my.csc.fi/" target="_blank">MyCSC <span class="hidden">- User portal</span></a>
+    </li>
+    <li>
+      <a href="https://www.csc.fi/" target="_blank">csc.fi <span class="hidden">- Company site</span></a>
+    </li>
+    
+  </ul>
+</div>
+  
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Docs CSC" class="md-header__button md-logo" aria-label="Docs CSC" data-md-component="logo">
+      
+  <img src="../../../assets/images/logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Docs CSC
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Copying files using scp
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+      <div class="md-header__option">
+  <div class="md-select">
+    
+    <button class="md-header__button md-icon" aria-label="Select language">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0M5.78 8.75a9.64 9.64 0 0 0 1.363 4.177q.383.64.857 1.215c.245-.296.551-.705.857-1.215A9.64 9.64 0 0 0 10.22 8.75Zm4.44-1.5a9.64 9.64 0 0 0-1.363-4.177c-.307-.51-.612-.919-.857-1.215a10 10 0 0 0-.857 1.215A9.64 9.64 0 0 0 5.78 7.25Zm-5.944 1.5H1.543a6.51 6.51 0 0 0 4.666 5.5q-.184-.271-.352-.552c-.715-1.192-1.437-2.874-1.581-4.948m-2.733-1.5h2.733c.144-2.074.866-3.756 1.58-4.948q.18-.295.353-.552a6.51 6.51 0 0 0-4.666 5.5m10.181 1.5c-.144 2.074-.866 3.756-1.58 4.948q-.18.296-.353.552a6.51 6.51 0 0 0 4.666-5.5Zm2.733-1.5a6.51 6.51 0 0 0-4.666-5.5q.184.272.353.552c.714 1.192 1.436 2.874 1.58 4.948Z"/></svg>
+    </button>
+    <div class="md-select__inner">
+      <ul class="md-select__list">
+        
+          <li class="md-select__item">
+            <a href="./" hreflang="en" class="md-select__link">
+              In English
+            </a>
+          </li>
+        
+          <li class="md-select__item">
+            <a href="/fi/data/moving/scp/" hreflang="fi" class="md-select__link">
+              Suomeksi
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/CSCfi/csc-user-guide/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M2.6 10.59 8.38 4.8l1.69 1.7c-.24.85.15 1.78.93 2.23v5.54c-.6.34-1 .99-1 1.73a2 2 0 0 0 2 2 2 2 0 0 0 2-2c0-.74-.4-1.39-1-1.73V9.41l2.07 2.09c-.07.15-.07.32-.07.5a2 2 0 0 0 2 2 2 2 0 0 0 2-2 2 2 0 0 0-2-2c-.18 0-.35 0-.5.07L13.93 7.5a1.98 1.98 0 0 0-1.15-2.34c-.43-.16-.88-.2-1.28-.09L9.8 3.38l.79-.78c.78-.79 2.04-.79 2.82 0l7.99 7.99c.79.78.79 2.04 0 2.82l-7.99 7.99c-.78.79-2.04.79-2.82 0L2.6 13.41c-.79-.78-.79-2.04 0-2.82"/></svg>
+  </div>
+  <div class="md-source__repository">
+    CSCfi/csc-user-guide
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+
+    <div class="md-container" data-md-component="container">
+      
+
+  <div class="announcement-banner">
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="announcement-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M16.36 14c.08-.66.14-1.32.14-2s-.06-1.34-.14-2h3.38c.16.64.26 1.31.26 2s-.1 1.36-.26 2m-5.15 5.56c.6-1.11 1.06-2.31 1.38-3.56h2.95a8.03 8.03 0 0 1-4.33 3.56M14.34 14H9.66c-.1-.66-.16-1.32-.16-2s.06-1.35.16-2h4.68c.09.65.16 1.32.16 2s-.07 1.34-.16 2M12 19.96c-.83-1.2-1.5-2.53-1.91-3.96h3.82c-.41 1.43-1.08 2.76-1.91 3.96M8 8H5.08A7.92 7.92 0 0 1 9.4 4.44C8.8 5.55 8.35 6.75 8 8m-2.92 8H8c.35 1.25.8 2.45 1.4 3.56A8 8 0 0 1 5.08 16m-.82-2C4.1 13.36 4 12.69 4 12s.1-1.36.26-2h3.38c-.08.66-.14 1.32-.14 2s.06 1.34.14 2M12 4.03c.83 1.2 1.5 2.54 1.91 3.97h-3.82c.41-1.43 1.08-2.77 1.91-3.97M18.92 8h-2.95a15.7 15.7 0 0 0-1.38-3.56c1.84.63 3.37 1.9 4.33 3.56M12 2C6.47 2 2 6.5 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10A10 10 0 0 0 12 2"/></svg></div>
+
+<p>
+Docs CSC now features an automatic Finnish translation. <a href="../../../support/translation/">Click here for more information</a>.
+</p>
+
+<div class="announcement-icon announcement-icon-end"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M16.36 14c.08-.66.14-1.32.14-2s-.06-1.34-.14-2h3.38c.16.64.26 1.31.26 2s-.1 1.36-.26 2m-5.15 5.56c.6-1.11 1.06-2.31 1.38-3.56h2.95a8.03 8.03 0 0 1-4.33 3.56M14.34 14H9.66c-.1-.66-.16-1.32-.16-2s.06-1.35.16-2h4.68c.09.65.16 1.32.16 2s-.07 1.34-.16 2M12 19.96c-.83-1.2-1.5-2.53-1.91-3.96h3.82c-.41 1.43-1.08 2.76-1.91 3.96M8 8H5.08A7.92 7.92 0 0 1 9.4 4.44C8.8 5.55 8.35 6.75 8 8m-2.92 8H8c.35 1.25.8 2.45 1.4 3.56A8 8 0 0 1 5.08 16m-.82-2C4.1 13.36 4 12.69 4 12s.1-1.36.26-2h3.38c-.08.66-.14 1.32-.14 2s.06 1.34.14 2M12 4.03c.83 1.2 1.5 2.54 1.91 3.97h-3.82c.41-1.43 1.08-2.77 1.91-3.97M18.92 8h-2.95a15.7 15.7 0 0 0-1.38-3.56c1.84.63 3.37 1.9 4.33 3.56M12 2C6.47 2 2 6.5 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10A10 10 0 0 0 12 2"/></svg></div>
+
+  </div>
+
+
+
+  <div class="announcement-banner announcement-urgent"
+       style="color: var(--c-error-900); background-color: var(--c-error-200);">
+    
+
+<div class="announcement-container"><p>Warning!</p>
+<div>
+  <p>Puhti scratch disk is becoming very full (80+ % ) resulting in performance degradation. Everybody is advised to only keep actively processed data on scratch, all other data should be deleted, transferred to host institute or stored in Lumi-O. No new quota will be granted. <a href="../../../support/tutorials/lue/">Click here for a tool for examining your disk usage.</a></p>
+</div></div>
+  </div>
+
+
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Docs CSC" class="md-nav__button md-logo" aria-label="Docs CSC" data-md-component="logo">
+      
+  <img src="../../../assets/images/logo.svg" alt="logo">
+
+    </a>
+    Docs CSC
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/CSCfi/csc-user-guide/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M2.6 10.59 8.38 4.8l1.69 1.7c-.24.85.15 1.78.93 2.23v5.54c-.6.34-1 .99-1 1.73a2 2 0 0 0 2 2 2 2 0 0 0 2-2c0-.74-.4-1.39-1-1.73V9.41l2.07 2.09c-.07.15-.07.32-.07.5a2 2 0 0 0 2 2 2 2 0 0 0 2-2 2 2 0 0 0-2-2c-.18 0-.35 0-.5.07L13.93 7.5a1.98 1.98 0 0 0-1.15-2.34c-.43-.16-.88-.2-1.28-.09L9.8 3.38l.79-.78c.78-.79 2.04-.79 2.82 0l7.99 7.99c.79.78.79 2.04 0 2.82l-7.99 7.99c-.78.79-2.04.79-2.82 0L2.6 13.41c-.79-.78-.79-2.04 0-2.82"/></svg>
+  </div>
+  <div class="md-source__repository">
+    CSCfi/csc-user-guide
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../accounts/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Accounts
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Accounts
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../accounts/how-to-create-new-user-account/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Creating a new user account
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../accounts/account-lifecycle/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    User account lifecycle
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../accounts/how-to-change-password/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Changing your password
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../accounts/how-to-manage-user-information/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Managing user information
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../accounts/how-to-create-new-project/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Creating a new project
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../accounts/when-your-project-handles-personal-data/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    When your project handles personal data
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../accounts/how-to-add-members-to-project/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Adding members to your project
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../accounts/how-to-add-service-access-for-project/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Adding service access for your project
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../accounts/how-to-manage-your-project/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Managing your project
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../accounts/how-to-apply-for-billing-units/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Applying for Billing Units
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../accounts/how-to-increase-disk-quotas/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Increasing disk quotas
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../accounts/how-to-access-mahti-large-partition/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Accessing Mahti large partition
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../accounts/how-to-view-billing-unit-usage/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Reviewing Billing Unit usage
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../accounts/billing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Billing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../accounts/mfa/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Multi-factor authentication
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../accounts/strong-identification/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Strong identification
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../accounts/fmi/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FMI
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../computing/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Computing
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Computing
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../computing/usage-policy/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Usage policy
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../computing/hpc-billing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Billing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../computing/available-systems/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Systems
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            Systems
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../computing/systems-puhti/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Puhti
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../computing/systems-mahti/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Mahti
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../computing/systems-roihu/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Roihu
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://docs.lumi-supercomputer.eu/hardware/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    LUMI
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../computing/connecting/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Connecting
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            Connecting
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../computing/connecting/ssh-keys/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Setting up SSH keys
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../computing/connecting/ssh-unix/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SSH client on macOS and Linux
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../computing/connecting/ssh-windows/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SSH client on Windows
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../computing/disk/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Supercomputer storage
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_5" id="__nav_3_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_5">
+            <span class="md-nav__icon md-icon"></span>
+            Supercomputer storage
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../computing/lustre/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lustre filesystem
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../computing/modules/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Module environment
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_7" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../computing/running/getting-started/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Running jobs
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_7" id="__nav_3_7_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_7">
+            <span class="md-nav__icon md-icon"></span>
+            Running jobs
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../computing/running/batch-job-partitions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Available batch job partitions
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../computing/running/creating-job-scripts-puhti/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Create Puhti batch jobs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../computing/running/example-job-scripts-puhti/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Puhti example scripts
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../computing/running/creating-job-scripts-mahti/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Create Mahti batch jobs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../computing/running/example-job-scripts-mahti/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Mahti example scripts
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../computing/running/submitting-jobs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Submitting a job
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../computing/running/throughput/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    High throughput
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../computing/running/interactive-usage/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Interactive usage
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../computing/running/performance-checklist/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Performance checklist
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_8" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../computing/installing/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Installing software
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_8" id="__nav_3_8_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_8">
+            <span class="md-nav__icon md-icon"></span>
+            Installing software
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../computing/compiling-puhti/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Compiling on Puhti
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../computing/compiling-mahti/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Compiling on Mahti
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../computing/compiling-lumi/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Compiling on LUMI
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../computing/hpc-libraries/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    High performance libraries
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../computing/debugging/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Debugging
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../computing/performance/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Performance analysis
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_11" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../computing/containers/overview/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Apptainer containers
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_11" id="__nav_3_11_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_11">
+            <span class="md-nav__icon md-icon"></span>
+            Apptainer containers
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../computing/containers/examples/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Examples
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../computing/containers/tykky/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tykky
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../computing/containers/lumi/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    LUMI
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_12" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../computing/webinterface/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Web interface
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_12" id="__nav_3_12_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_12_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_12">
+            <span class="md-nav__icon md-icon"></span>
+            Web interface
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../computing/webinterface/connecting/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Connecting
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../computing/webinterface/shell/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Shell
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../computing/webinterface/file-browser/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Files and storage services
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../computing/webinterface/project-view/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Project view
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_12_5" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../computing/webinterface/apps/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Interactive apps
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_12_5" id="__nav_3_12_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_12_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_12_5">
+            <span class="md-nav__icon md-icon"></span>
+            Interactive apps
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../computing/webinterface/accelerated-visualization/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Accelerated visualization
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../computing/webinterface/desktop/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Desktop
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../computing/webinterface/jupyter/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Jupyter
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../computing/webinterface/julia-on-jupyter/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Julia on Jupyter
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../computing/webinterface/jupyter-for-courses/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Jupyter for courses
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../computing/webinterface/matlab/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MATLAB
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../computing/webinterface/mlflow/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MLflow
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../computing/webinterface/r-jupyter/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    R-Jupyter
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../computing/webinterface/rstudio/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    RStudio
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../computing/webinterface/tensorboard/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    TensorBoard
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../computing/webinterface/vscode/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Visual Studio Code
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_13" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../computing/quantum-computing/overview/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Quantum computing
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_13" id="__nav_3_13_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_13_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_13">
+            <span class="md-nav__icon md-icon"></span>
+            Quantum computing
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../computing/quantum-computing/projects/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Projects
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../computing/quantum-computing/access/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Access through LUMI
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../computing/quantum-computing/first-quantum-job/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    First quantum job
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../computing/quantum-computing/specs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Technical details
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../computing/quantum-computing/fiqci-partition/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FiQCI partition
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../computing/quantum-computing/running-quantum-jobs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Running quantum jobs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../cloud/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Cloud Services
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Cloud Services
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../cloud/noppe/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Noppe
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4_1" id="__nav_4_1_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_1">
+            <span class="md-nav__icon md-icon"></span>
+            Noppe
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cloud/noppe/guide_for_students/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Guide for students
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cloud/noppe/guide_for_teachers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Guide for teachers
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cloud/noppe/concepts/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Concepts
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cloud/noppe/data_persistence/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Data persistence
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../cloud/pouta/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Pouta
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            Pouta
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2_1" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../cloud/pouta/getting-started/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Getting started
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4_2_1" id="__nav_4_2_1_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            Getting started
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cloud/pouta/launch-vm-from-web-gui/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Creating a virtual machine
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cloud/pouta/connecting-to-vm/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Connecting the virtual machine
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2_1_3" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../cloud/pouta/command-line-tools/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Command line
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4_2_1_3" id="__nav_4_2_1_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_4_2_1_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2_1_3">
+            <span class="md-nav__icon md-icon"></span>
+            Command line
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cloud/pouta/install-client/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Install
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2_2" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../cloud/pouta/configuration/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Configuration
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4_2_2" id="__nav_4_2_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            Configuration
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cloud/pouta/vm-lifecycle/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    VM lifecycle & saving BUs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cloud/pouta/vm-flavors-and-billing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Virtual machine flavors and Billing Unit rates
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2_2_3" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../cloud/pouta/images/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Images
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4_2_2_3" id="__nav_4_2_2_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_4_2_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            Images
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cloud/pouta/adding-images/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Creating, Converting, Uploading and Sharing virtual machine images
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cloud/pouta/networking/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Networking
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2_2_5" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../cloud/pouta/storage/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Storage
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4_2_2_5" id="__nav_4_2_2_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_4_2_2_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2_2_5">
+            <span class="md-nav__icon md-icon"></span>
+            Storage
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cloud/pouta/ephemeral-storage/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Ephemeral storage
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cloud/pouta/persistent-volumes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Persistent volumes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cloud/pouta/snapshots/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Snapshots
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cloud/pouta/qemu-vm/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Snapshot using QEMU
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cloud/pouta/multiattach/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Multi-attach Cinder storage
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2_3" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../cloud/pouta/advanced/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Advanced
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4_2_3" id="__nav_4_2_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            Advanced
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cloud/pouta/additional-services/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Additional services (email, dns)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cloud/pouta/api-access/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    API Access
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cloud/pouta/application-credentials/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Application credentials
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cloud/pouta/application-dev/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Application Development Practises
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cloud/pouta/known-problems/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Known problems and limitations
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cloud/pouta/security/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Security Guidelines for Pouta
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2_4" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../cloud/pouta/tutorials/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Tutorials
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4_2_4" id="__nav_4_2_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_2_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2_4">
+            <span class="md-nav__icon md-icon"></span>
+            Tutorials
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cloud/pouta/tutorials/beegfs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    BeeGFS
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cloud/pouta/tutorials/pouta-videos/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    cPouta and ePouta related videos
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cloud/pouta/tutorials/create-fixed-ip-for-Vm/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Create a fixed IP for a VM
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cloud/pouta/tutorials/create-jumphost/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Create a jumphost in cPouta
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cloud/pouta/tutorials/web-app-dev-cloud/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Learn cloud computing by developing and deploying a web application
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cloud/pouta/tutorials/heat-orchestration/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Orchestration with Heat
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cloud/pouta/tutorials/Ray-ML-cloud/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Ray - A Machine learning framework for cloud
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cloud/pouta/tutorials/nfs-server/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Set up a NFS server
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cloud/pouta/tutorials/picture-pipeline/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Set up a pipeline for pictures
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cloud/pouta/tutorials/ssh-key/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SSH Key-pair
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../cloud/dbaas/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Pukki
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            Pukki
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cloud/dbaas/what-is-dbaas/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    What is DBaaS
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cloud/dbaas/security-guides/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Security Guides
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3_3" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../cloud/dbaas/getting-started/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Getting started with DBaaS
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4_3_3" id="__nav_4_3_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            Getting started with DBaaS
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cloud/dbaas/web-interface/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Web interface
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cloud/dbaas/cli/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Command Line tools
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cloud/dbaas/firewalls/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Firewalls
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cloud/dbaas/operations/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Database Operations
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cloud/dbaas/application-credentials/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Application Credentials
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cloud/dbaas/flavors/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Database sizes and prices
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cloud/dbaas/backups/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Backups
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3_6" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../cloud/dbaas/databases/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Databases
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4_3_6" id="__nav_4_3_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_3_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3_6">
+            <span class="md-nav__icon md-icon"></span>
+            Databases
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3_6_1" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../cloud/dbaas/postgresql/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    PostgreSQL
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4_3_6_1" id="__nav_4_3_6_1_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_4_3_6_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3_6_1">
+            <span class="md-nav__icon md-icon"></span>
+            PostgreSQL
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cloud/dbaas/postgres-accessing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Accessing your database
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cloud/dbaas/postgres-versions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    PostgreSQL version differences
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cloud/dbaas/postgres-extensions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Extensions and parameters
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cloud/dbaas/postgres-permissions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Permissions
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cloud/dbaas/postgres-14-eol/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    PostgreSQL 14 EOL
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3_6_2" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../cloud/dbaas/mariadb/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    MariaDB
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4_3_6_2" id="__nav_4_3_6_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_4_3_6_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3_6_2">
+            <span class="md-nav__icon md-icon"></span>
+            MariaDB
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cloud/dbaas/mariadb-accessing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Accessing your database
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cloud/dbaas/mariadb-permissions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Permissions
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cloud/dbaas/advanced/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    More advanced features
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cloud/dbaas/resize-volume/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Resizing database instance volumes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cloud/dbaas/rebuild-database/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Rebuilding database instances
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../cloud/rahti/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Rahti
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4_4" id="__nav_4_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_4">
+            <span class="md-nav__icon md-icon"></span>
+            Rahti
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4_1" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../cloud/rahti/rahti-what-is/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    What is Rahti
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4_4_1" id="__nav_4_4_1_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_4_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_4_1">
+            <span class="md-nav__icon md-icon"></span>
+            What is Rahti
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cloud/rahti/containers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Containers & their Orchestration
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cloud/rahti/concepts/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Kubernetes and OpenShift concepts
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cloud/rahti/ext_docs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    External documentation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_4_2" id="__nav_4_4_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Getting Started
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            Getting Started
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cloud/rahti/access/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Getting access
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cloud/rahti/usage/getting_started/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Web user interface
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cloud/rahti/usage/cli/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Command line tool
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cloud/rahti/moving-into/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Moving into Rahti
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cloud/rahti/rahti_faq/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Rahti FAQ
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_4_3" id="__nav_4_4_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Configuration
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            Configuration
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cloud/rahti/billing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Billing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cloud/rahti/usage/projects_and_quota/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Projects and quota
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cloud/rahti/catalog-docs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Rahti Catalog
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4_3_4" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../cloud/rahti/images/overview/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Images
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4_4_3_4" id="__nav_4_4_3_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_4_4_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_4_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            Images
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cloud/rahti/images/creating/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Creating an image
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cloud/rahti/images/keeping_docker_images_small/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Keeping docker images small
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cloud/rahti/images/Using_Rahti_integrated_registry/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Using Rahti integrated registry
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4_3_5" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../cloud/rahti/storage/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Storage in Rahti
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4_4_3_5" id="__nav_4_4_3_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_4_4_3_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_4_3_5">
+            <span class="md-nav__icon md-icon"></span>
+            Storage in Rahti
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cloud/rahti/storage/ephemeral/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Ephemeral storage
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cloud/rahti/storage/persistent/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Persistent volumes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cloud/rahti/storage/objectstorage/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Object storage
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cloud/rahti/storage/expand-volumes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Expand a volume
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cloud/rahti/storage/volume-snapshot/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Volume snapshot
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4_4" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../cloud/rahti/advanced/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Advanced
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4_4_4" id="__nav_4_4_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_4_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_4_4">
+            <span class="md-nav__icon md-icon"></span>
+            Advanced
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cloud/rahti/networking/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Networking
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cloud/rahti/security-guide/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Security guide
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4_5" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../cloud/rahti/tutorials/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Tutorials
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4_4_5" id="__nav_4_4_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_4_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_4_5">
+            <span class="md-nav__icon md-icon"></span>
+            Tutorials
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cloud/rahti/tutorials/4cat/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4cat
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cloud/rahti/tutorials/advanced-NetworkPolicies-networking/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Advanced NetworkPolicies
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cloud/rahti/tutorials/connect-database-hpc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Accessing databases on Rahti from CSC supercomputers
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cloud/rahti/tutorials/allow-pull-from-other-projects/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Allow pulls of images from one Rahti project to another
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cloud/rahti/tutorials/annotations/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Annotations
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cloud/rahti/tutorials/ci_cd_introduction/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CI/CD on Rahti
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cloud/rahti/tutorials/custom-domain/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Custom domain names and secure transport
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cloud/rahti/tutorials/deploy_static_webserver_cli/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Deploying a static web server using the command line
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cloud/rahti/tutorials/deploy_from_git/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Deploying from Git
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cloud/rahti/tutorials/deploy_static_webserver_webconsole/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Deploying a static web server using the web interface
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cloud/rahti/tutorials/highavailability/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    How to deploy a High Available application in Rahti
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cloud/rahti/tutorials/kustomize/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Kustomize
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cloud/rahti/tutorials/web-app-dev-cloud/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Learn cloud computing by developing and deploying a web application
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cloud/rahti/tutorials/multi-stage-builds/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Multi stage builds
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cloud/rahti/tutorials/nextcloud/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Nextcloud
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cloud/rahti/tutorials/oauth2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    OAuth2 Proxy
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cloud/rahti/tutorials/pod-affinity/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Pod (anti) affinity
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cloud/rahti/tutorials/sidecar_proxy_authentication/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Reverse proxy authentication using a sidecar container
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cloud/rahti/tutorials/email/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Sending e-mail from Rahti
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cloud/rahti/tutorials/http-redirector/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Setup a HTTP redirection in Rahti
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cloud/rahti/tutorials/yaml_introduction/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Short introduction to YAML
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cloud/rahti/tutorials/webhooks/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Webhooks
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Data
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Data
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_1" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../datasets/dataset-sources/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Working with data
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5_1" id="__nav_5_1_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_1">
+            <span class="md-nav__icon md-icon"></span>
+            Working with data
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../datasets/datamanagement/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tips for data management
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../datasets/metadata-and-documentation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Metadata and data documentation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../datasets/sourcing-datasets/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Dataset sources
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../datasets/hosting-datasets-at-CSC/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Storing data at CSC
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../datasets/publishing-datasets/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Publishing datasets
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Moving data
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5_2">
+            <span class="md-nav__icon md-icon"></span>
+            Moving data
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Copying files using scp
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Copying files using scp
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#using-scp-to-copy-data-between-your-local-computer-and-puhti" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using scp to copy data between your local computer and Puhti
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-scp-to-copy-data-directly-between-csc-supercomputers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using scp to copy data directly between CSC supercomputers
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web-interface/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Moving files using the HPC web interfaces
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../graphical_transfer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Graphical file transfer tools
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../rsync/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Using rsync for data transfer and synchronization
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tar_ssh/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Using tar and SSH to transfer many small files efficiently
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wget/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Using wget to download data from web sites to CSC
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../funet/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Sharing and transporting files using Funet FileSender
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ida/using_ida/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Moving data between IDA and CSC computing environment
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../disk_mount/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Remote disk mounts
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../copy_allas_ida/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Copying data between Allas and IDA via Puhti
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_3" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../Allas/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Allas object storage
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5_3" id="__nav_5_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_3">
+            <span class="md-nav__icon md-icon"></span>
+            Allas object storage
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Allas/introduction/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Introduction to Allas Storage service
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Allas/accessing_allas/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Accessing Allas
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Allas/using_allas/common_use_cases/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Common Use Cases
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Allas/using_allas/error_messages/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Common Error Messages
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Allas/terms_and_concepts/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Allas object storage related terms and concepts
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_3_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_3_6" id="__nav_5_3_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Allas clients
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_3_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_3_6">
+            <span class="md-nav__icon md-icon"></span>
+            Allas clients
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Allas/using_allas/allas-conf/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Allas connection configuration
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Allas/using_allas/allas-ui/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Allas web UI
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../computing/webinterface/file-browser/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Files and storage services
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Allas/using_allas/a_commands/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    a-commands
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Allas/using_allas/a_backup/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    a-backup
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Allas/using_allas/cyberduck/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cyberduck
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Allas/using_allas/python_boto3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Python with S3
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Allas/using_allas/python_swift/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Python with Swift
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Allas/using_allas/rclone/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Rclone from Computing environment
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Allas/using_allas/rclone_local/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Rclone form Workstation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Allas/using_allas/swift_client/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Swift
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Allas/using_allas/s3_client/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    S3cmd
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Allas/using_allas/web_client/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Pouta web UI
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../sensitive-data/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Sensitive data
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Sensitive data
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sensitive-data/sd-services-toc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Table of contents
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_2" id="__nav_6_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Research data - Store and analyse
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_2">
+            <span class="md-nav__icon md-icon"></span>
+            Research data - Store and analyse
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2_1" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../sensitive-data/sd-store-and-analyze-research-data/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Start here
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6_2_1" id="__nav_6_2_1_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            Start here
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sensitive-data/sd-use-case-new-user-project-manager/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Access as project manager
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sensitive-data/sd-use-case-new-user-project-member/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Access as project members
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sensitive-data/sd-billing-units/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Resource planning for your CSC Project
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2_2" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../sensitive-data/sd_connect/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Store with SD Connect
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6_2_2" id="__nav_6_2_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            Store with SD Connect
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sensitive-data/sd-connect-login/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Login to SD Connect
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sensitive-data/sd-connect-upload/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Upload
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sensitive-data/sd-connect-download/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Download
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sensitive-data/sd-connect-delete/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Delete
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sensitive-data/sd-connect-share/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Share
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sensitive-data/sd-connect-command-line-interface/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Command line interface
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sensitive-data/sd-connect-troubleshooting/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Troubleshooting
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sensitive-data/sd-connect-conversion/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Page under construction
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2_3" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../sensitive-data/sd_desktop/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Analyse with SD Desktop
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6_2_3" id="__nav_6_2_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            Analyse with SD Desktop
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sensitive-data/sd-desktop-login/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Login to SD Desktop
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sensitive-data/sd-desktop-create/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Create virtual desktop and volume
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sensitive-data/sd-desktop-manage/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Manage virtual desktop and volume
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sensitive-data/sd-desktop-access-vm/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Access virtual desktop
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sensitive-data/sd-desktop-working/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Work with your virtual desktop
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sensitive-data/sd-desktop-software/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Customisation - software & tools
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sensitive-data/sd-desktop-access/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Import data
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sensitive-data/sd-desktop-export/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Export data via user interface
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sensitive-data/sd-desktop-export-commandline/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Export data programmatically
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sensitive-data/sd-desktop-troubleshooting/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Troubleshooting
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_3" id="__nav_6_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Research data - Publish and reuse
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_3">
+            <span class="md-nav__icon md-icon"></span>
+            Research data - Publish and reuse
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_3_1" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../sensitive-data/federatedega/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Publish with Federated EGA
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6_3_1" id="__nav_6_3_1_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            Publish with Federated EGA
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sensitive-data/fega-submission/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Publish data
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_3_2" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../sensitive-data/sd-apply/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Reuse with SD Apply
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6_3_2" id="__nav_6_3_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            Reuse with SD Apply
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sensitive-data/sd-apply-access/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Apply access to FEGA data
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sensitive-data/sd-apply-approval/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Approve access to FEGA data
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sensitive-data/sd-apply-dac/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Enable reuse of FEGA data
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_4" id="__nav_6_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Secondary use of health and social data
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_4">
+            <span class="md-nav__icon md-icon"></span>
+            Secondary use of health and social data
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_4_1" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../sensitive-data/secondarydata-access/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Start here
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6_4_1" id="__nav_6_4_1_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_4_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_4_1">
+            <span class="md-nav__icon md-icon"></span>
+            Start here
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sensitive-data/findata-permit/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Access with Findata permit
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sensitive-data/single-register-permit/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Access with register permit
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sensitive-data/sd-secondaryuse-billing-units/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Resource planning for your CSC Project
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_4_2" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../sensitive-data/sd-desktop-audited/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Analyse with SD Desktop for secondary use
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6_4_2" id="__nav_6_4_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            Analyse with SD Desktop for secondary use
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sensitive-data/sd-desktop-secondary-login/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Login to SD Desktop
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sensitive-data/sd-desktop-secondary-create/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Create virtual desktop
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sensitive-data/sd-desktop-secondary-manage/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Manage virtual desktop
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sensitive-data/sd-desktop-secondary-access-vm/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Access virtual desktop
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sensitive-data/sd-desktop-secondary-working/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Work with your desktop and software
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sensitive-data/sd-desktop-secondary-access/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Import data
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sensitive-data/sd-desktop-secondary-export/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Export data
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sensitive-data/sd-desktop-secondary-troubleshooting/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Troubleshooting
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sensitive-data/single-register-submission/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Instructions for registers
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sensitive-data/sd-terminology/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Terminology
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_6" id="__nav_6_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    SD Services â€“ Version history
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_6">
+            <span class="md-nav__icon md-icon"></span>
+            SD Services â€“ Version history
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sensitive-data/releases-sd-connect/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SD Connect releases
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sensitive-data/releases-sd-desktop/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SD Desktop releases
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../apps/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Applications
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_7" id="__nav_7_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Applications
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../apps/by_discipline/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    By discipline
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../apps/by_availability/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    By availability
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../apps/by_license/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    By license
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../support/faq/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FAQ
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../support/tutorials/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tutorials
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../support/training-material/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Training material
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../support/contact/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Contact
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../support/whats-new/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    What's new
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#using-scp-to-copy-data-between-your-local-computer-and-puhti" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using scp to copy data between your local computer and Puhti
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-scp-to-copy-data-directly-between-csc-supercomputers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using scp to copy data directly between CSC supercomputers
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+  
+    
+<nav class="md-nav csc-breadcrumbs">
+
+  <ul>
+    
+<li>
+
+  <p><a href="../../..">Docs CSC<span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5.59 7.41 7 6l6 6-6 6-1.41-1.41L10.17 12zm6 0L13 6l6 6-6 6-1.41-1.41L16.17 12z"/></svg></span></a></p>
+
+</li>
+
+<li>
+
+  <p><a href="../../">Data<span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5.59 7.41 7 6l6 6-6 6-1.41-1.41L10.17 12zm6 0L13 6l6 6-6 6-1.41-1.41L16.17 12z"/></svg></span></a></p>
+
+</li>
+
+<li>
+
+  <p><a href="../">Moving data<span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5.59 7.41 7 6l6 6-6 6-1.41-1.41L10.17 12zm6 0L13 6l6 6-6 6-1.41-1.41L16.17 12z"/></svg></span></a></p>
+
+</li>
+
+    
+<li>
+
+  <p>Copying files using scp<span class="twemoji"></span></p>
+
+</li>
+
+  
+  </ul>
+</nav>
+  
+  
+                  
+
+
+  
+    <a href="https://github.com/CSCfi/csc-user-guide/edit/master/docs/data/moving/scp.md" title="Edit this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="copying-files-using-scp">Copying files using scp</h1>
+<div class="admonition warning">
+<p class="admonition-title"><abbr title="Secure SHell">SSH</abbr> keys are required to connect to Puhti and Mahti over <abbr title="Secure SHell">SSH</abbr></p>
+<p>Since April 14th 2025, connecting to Puhti and Mahti over <abbr title="Secure SHell">SSH</abbr> only works
+using <abbr title="Secure SHell">SSH</abbr> keys added in MyCSC. Password authentication and public keys
+stored in users' personal <code>~/.ssh/authorized_keys</code> file on the
+supercomputer no longer works.</p>
+<p><a href="../../../computing/connecting/ssh-keys/">Read the detailed instructions on setting up and using <abbr title="Secure SHell">SSH</abbr> keys</a>.</p>
+</div>
+<p>Copying files between different Linux, macOS and Windows machines can be done
+with the <code>scp</code> command. Thus, you can use <code>scp</code> to transport data between CSC
+and your local computer, or between different file systems at CSC.</p>
+<p>The basic syntax for copying data from a local machine to a remote server is:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>scp<span class="w"> </span>/path/to/file<span class="w"> </span>username@server:/path/to/remote/destination
+</span></code></pre></div>
+<p>And correspondingly the syntax to copy files from a remote server to a local
+machine is:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>scp<span class="w"> </span>username@server:/path/to/file<span class="w"> </span>/path/to/local/destination
+</span></code></pre></div>
+<div class="admonition info">
+<p class="admonition-title">Non-standard location or name for <abbr title="Secure SHell">SSH</abbr> keys</p>
+<p>If you have stored your <abbr title="Secure SHell">SSH</abbr> key file with a non-default name or in a
+non-default location (somewhere else than <code>~/.ssh/id_&lt;algorithm&gt;</code>), you
+must specify where <code>scp</code> should look for the key using the <code>-i</code> option,
+e.g:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>scp<span class="w"> </span>-i<span class="w"> </span>/path/to/sshkey<span class="w"> </span>/path/to/file<span class="w"> </span>username@server:/path/to/remote/destination
+</span></code></pre></div>
+<p>The rest of this page assumes the key is stored in a default location using
+a standard name, so the <code>-i</code> flag is omitted.</p>
+</div>
+<h2 id="using-scp-to-copy-data-between-your-local-computer-and-puhti">Using scp to copy data between your local computer and Puhti</h2>
+<p>For example, the command to copy a local file <code>data.txt</code> from the current
+directory to the home directory of user <code>bob</code> on Puhti would be:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>scp<span class="w"> </span>data.txt<span class="w"> </span>bob@puhti.csc.fi:~/
+</span></code></pre></div>
+<p>The special symbol <code>~</code> points to the user's home directory. You can use the
+<code>csc-workspaces</code> command on Puhti to show other available disk areas.</p>
+<p>To copy complete directories, you should use <code>scp</code> command with option <code>-r</code>.
+For example:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>scp<span class="w"> </span>-r<span class="w"> </span>/path/to/data_directory<span class="w"> </span>bob@puhti.csc.fi:/scratch/project_2001234/data_dir<span class="w"> </span>
+</span></code></pre></div>
+<p>The above command would copy the directory <code>data_directory</code> and all its
+contents to Puhti at <code>/scratch/project_2001234/data_dir</code>.</p>
+<p>Copying the data from a CSC server to your local machine is done in the same
+way:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>scp<span class="w"> </span>bob@puhti.csc.fi:/scratch/project_2001234/data.txt<span class="w"> </span>.
+</span></code></pre></div>
+<p>The <code>.</code> symbol points to the current working directory on your local machine,
+i.e. the location where you're running the <code>scp</code> command.</p>
+<p>In the commands above, files and directories have been copied one at a time.
+However, <code>scp</code> can also copy several files at once. For example:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>scp<span class="w"> </span>data1.txt<span class="w"> </span>data2.txt<span class="w"> </span>data3.txt<span class="w"> </span>bob@puhti.csc.fi:~/
+</span></code></pre></div>
+<p>You can also use wildcards when defining the files to be copied. For example,
+to copy all files with extension <code>.txt</code> from the current directory on your
+local machine to your home directory on Puhti, you could use the command:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>scp<span class="w"> </span>*.txt<span class="w"> </span>bob@puhti.csc.fi:~/
+</span></code></pre></div>
+<p>By default, the copied files are treated as new files, but if you add option
+<code>-p</code> to the <code>scp</code> command, then the copied file will inherit the timestamp and
+access mode information from the original file.</p>
+<h2 id="using-scp-to-copy-data-directly-between-csc-supercomputers">Using scp to copy data directly between CSC supercomputers</h2>
+<p>To copy data directly between CSC supercomputers, <code>scp</code> must be able to access
+the <abbr title="Secure SHell">SSH</abbr> keys you've set up on your local workstation for authenticating to CSC
+supercomputers. This is accomplished by forwarding your <abbr title="Secure SHell">SSH</abbr> agent to the
+supercomputer you're first connecting to.</p>
+<ul>
+<li><a href="../../../computing/connecting/ssh-unix/#ssh-agent-forwarding"><abbr title="Secure SHell">SSH</abbr> agent forwarding instructions for Linux/macOS</a></li>
+<li><a href="../../../computing/connecting/ssh-windows/#ssh-agent-forwarding"><abbr title="Secure SHell">SSH</abbr> agent forwarding instructions for Windows</a></li>
+</ul>
+<p>After this, <code>scp</code> can be used to copy data directly between CSC supercomputers
+using the same syntax as above. For example, the command to copy a file
+<code>data.txt</code> from directory <code>/scratch/project_2001234</code> on Puhti to the same
+directory on Mahti would be:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>scp<span class="w"> </span>/scratch/project_2001234/data.txt<span class="w"> </span>bob@mahti.csc.fi:/scratch/project_2001234
+</span></code></pre></div>
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Last update">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 13, 2025 15:30:35">October 13, 2025</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
+
+
+
+
+
+
+
+
+
+<form name="feedback" class="csc-feedback"
+  data-source-edited="2025-10-13T15:30:35+03:00"
+  data-source-path="data/moving/scp.md">
+  <fieldset>
+    <legend>Do you find this page useful?</legend>
+    <div class="csc-feedback-content">
+      
+      <button class="md-button md-button--primary csc-feedback-button csc-feedback-button--positive"
+        type="submit" title="Yes! I do find this page useful." value="Positive">
+        Yes
+      </button>
+      <div class="csc-feedback-note csc-feedback-note--positive">
+        <div style="text-align: center;">Thank you for your feedback!</div>
+        
+      </div>
+      
+      <button class="md-button md-button--primary csc-feedback-button csc-feedback-button--negative"
+        type="submit" title="No! This page needs to be improved." value="Negative">
+        No
+      </button>
+      <div class="csc-feedback-note csc-feedback-note--negative">
+        <div style="text-align: center;">Thank you! Your feedback is appreciated.</div>
+        
+          
+          <div class="csc-feedback-instructions admonition note">
+            <p>Please let us know how we could improve this page by
+            <a href="../../../support/contact/">contacting us</a> or by
+            <a href="https://github.com/CSCfi/csc-user-guide/issues/new?labels=feedback&title=Feedback+on+data/moving/scp.md" target="_blank">creating an issue in GitHub</a>. You can also
+            <a href="https://github.com/CSCfi/csc-user-guide/edit/master/docs/data/moving/scp.md" target="_blank">edit this page yourself</a> and contribute your improvements by creating a pull request.</p>
+          </div>
+          
+        
+      </div>
+      
+    </div>
+  </fieldset>
+</form>
+
+
+                
+
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+  
+        
+
+
+<footer class="md-footer">
+  <nav class="md-footer__inner md-grid" aria-label="footer.title" >
+    <div class="csc-footer">
+      
+      <div class="csc-footer__column">
+        <div class="csc-footer__heading">Contact information</div>
+        <div class="csc-footer__body">
+          <strong>CSC &ndash; IT CENTER FOR SCIENCE LTD.</strong><br>
+	  P.O Box 405, 02101 Espoo
+        </div>
+        <div class="csc-footer__body">
+          
+    <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.15 6.59 6.59l2.2-2.2c.28-.28.67-.36 1.02-.25 1.12.37 2.32.57 3.57.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02z"/></svg></span>
+  
+    <a class="csc-footer__link" href="tel:+35894572001" target="_blank">(09) 457 2001 (switchboard)</a>
+        </div>
+        <div class="csc-footer__body">
+          
+    <a class="csc-footer__link" href="https://www.csc.fi/en/about-us/contact-information/" target="_blank">Detailed contact information at CSC.fi</a>
+        </div>
+      </div>
+      <div class="csc-footer__column">
+        <div class="csc-footer__heading">Customer service</div>
+        <div class="csc-footer__body">
+          Open weekdays from 8:30 till 16:00
+        </div>
+        <div class="csc-footer__body">
+          <ul>
+            <li>
+    <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7h5v10h-5v2a1 1 0 0 0 1 1h2v2h-2.5c-.55 0-1.5-.45-1.5-1 0 .55-.95 1-1.5 1H12v-2h2a1 1 0 0 0 1-1V5a1 1 0 0 0-1-1h-2V2h2.5c.55 0 1.5.45 1.5 1 0-.55.95-1 1.5-1H20v2h-2a1 1 0 0 0-1 1zM2 7h11v2H4v6h9v2H2zm18 8V9h-3v6z"/></svg></span>
+  
+    <a class="csc-footer__link" href="https://research.csc.fi/support" target="_blank">Contact form</a></li>
+            <li>
+    <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20 8-8 5-8-5V6l8 5 8-5m0-2H4c-1.11 0-2 .89-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2"/></svg></span>
+  
+    <a class="csc-footer__link" href="mailto:servicedesk@csc.fi" target="_blank">servicedesk@csc.fi</a></li>
+            <li>
+    <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.15 6.59 6.59l2.2-2.2c.28-.28.67-.36 1.02-.25 1.12.37 2.32.57 3.57.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02z"/></svg></span>
+  
+    <a class="csc-footer__link" href="tel:+35894572821" target="_blank">(09) 457 2821</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="csc-footer__column">
+        <div class="csc-footer__heading">Info</div>
+        <div class="csc-footer__body">
+          <ul>
+            <li>
+    <a class="csc-footer__link" href="https://research.csc.fi/service-breaks/" target="_blank">Maintenance breaks</a></li>
+            <li>
+    <a class="csc-footer__link" href="
+  ../../../support/accessibility/
+" target="_self">Accessibility statement</a></li>
+            <li>
+    <a class="csc-footer__link" href="
+  ../../../support/contact/
+#archives" target="_self">User communications archives</a></li>
+          </ul>
+        </div>
+      </div>
+      
+    </div>
+  </nav>
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/CSCfi/" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/company/csc---it-center-for-science/" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2zm-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93zM6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.instagram.com/CSCfi/" target="_blank" rel="noopener" title="www.instagram.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8C4 18.39 5.61 20 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6C20 5.61 18.39 4 16.4 4zm9.65 1.5a1.25 1.25 0 0 1 1.25 1.25A1.25 1.25 0 0 1 17.25 8 1.25 1.25 0 0 1 16 6.75a1.25 1.25 0 0 1 1.25-1.25M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.facebook.com/CSCfi/" target="_blank" rel="noopener" title="www.facebook.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2.04c-5.5 0-10 4.49-10 10.02 0 5 3.66 9.15 8.44 9.9v-7H7.9v-2.9h2.54V9.85c0-2.51 1.49-3.89 3.78-3.89 1.09 0 2.23.19 2.23.19v2.47h-1.26c-1.24 0-1.63.77-1.63 1.56v1.88h2.78l-.45 2.9h-2.33v7a10 10 0 0 0 8.44-9.9c0-5.53-4.5-10.02-10-10.02"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.youtube.com/c/CSCfi" target="_blank" rel="noopener" title="www.youtube.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m10 15 5.19-3L10 9zm11.56-7.83c.13.47.22 1.1.28 1.9.07.8.1 1.49.1 2.09L22 12c0 2.19-.16 3.8-.44 4.83-.25.9-.83 1.48-1.73 1.73-.47.13-1.33.22-2.65.28-1.3.07-2.49.1-3.59.1L12 19c-4.19 0-6.8-.16-7.83-.44-.9-.25-1.48-.83-1.73-1.73-.13-.47-.22-1.1-.28-1.9-.07-.8-.1-1.49-.1-2.09L2 12c0-2.19.16-3.8.44-4.83.25-.9.83-1.48 1.73-1.73.47-.13 1.33-.22 2.65-.28 1.3-.07 2.49-.1 3.59-.1L12 5c4.19 0 6.8.16 7.83.44.9.25 1.48.83 1.73 1.73"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+  
+
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["content.action.edit", "content.code.copy", "content.tabs.link"], "search": "../../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.c8b220af.min.js"></script>
+      
+        <script src="../../../assets/javascripts/extra.js"></script>
+      
+        <script src="../../../assets/javascripts/feedback.js"></script>
+      
+    
+  </body>
+</html>,]„Ée<      j"fÜj"fÝI‘`j"‚™   I    O^partitionKey=%28https%2Ccsc.fi%29,:https://docs.csc.fi/data/moving/scp/ necko:classified 1 peer-ip-address 195.148.21.61 peer-port 443 strongly-framed 1 security-info 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 request-method GET response-head HTTP/1.1 200 OK
+server: nginx/1.24.0
+date: Fri, 05 Jun 2026 06:04:13 GMT
+content-type: text/html
+content-length: 165251
+last-modified: Thu, 04 Jun 2026 10:20:39 GMT
+etag: "6a215177-28583"
+accept-ranges: bytes
+cache-control: private
+ original-response-headers server: nginx/1.24.0
+date: Fri, 05 Jun 2026 06:04:13 GMT
+content-type: text/html
+content-length: 165251
+last-modified: Thu, 04 Jun 2026 10:20:39 GMT
+etag: "6a215177-28583"
+accept-ranges: bytes
+set-cookie: 6589770a740d3d99dc0de7cee2e0f77f=4e8a695ef66c93ac799690a36e6a7eee; path=/; HttpOnly; Secure; SameSite=None
+cache-control: private
+ ctid 1 net-response-time-onstart 293 net-response-time-onstop 433  …ƒ
