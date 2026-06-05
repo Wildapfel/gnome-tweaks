@@ -3,5 +3,5 @@
 # ibus session bus with the below address.
 # If the IBUS_ADDRESS environment variable is set, it will
 # be used rather than this file.
-IBUS_ADDRESS=unix:path=/var/home/max-inspiron/.cache/ibus/dbus-SwXQquEE,guid=b4e7aab89ca63fddb89205b56a227e46
-IBUS_DAEMON_PID=28958
+IBUS_ADDRESS=unix:path=/var/home/max-inspiron/.cache/ibus/dbus-VuiYlPEU,guid=4db57e4e79278ec7ae9d7c9b6a22e381
+IBUS_DAEMON_PID=4064

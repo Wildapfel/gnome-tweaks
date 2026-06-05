@@ -227,4 +227,24 @@
       </metadata>
     </info>
   </bookmark>
+  <bookmark href="file:///var/home/max-inspiron/.local/share/gnome-shell/extensions-backup" added="2026-06-05T14:34:54.985429Z" modified="2026-06-05T14:34:54.985432Z" visited="2026-06-05T14:34:54.985430Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="inode/directory"/>
+        <bookmark:applications>
+          <bookmark:application name="org.gnome.Nautilus" exec="&apos;org.gnome.Nautilus %u&apos;" modified="2026-06-05T14:34:54.985430Z" count="1"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="file:///var/home/max-inspiron/dconf.config" added="2026-06-05T15:04:32.933982Z" modified="2026-06-05T15:04:32.933989Z" visited="2026-06-05T15:04:32.933983Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="text/plain"/>
+        <bookmark:applications>
+          <bookmark:application name="org.gnome.Nautilus" exec="&apos;/usr/bin/flatpak run --branch=stable --arch=x86_64 --command=gnome-text-editor --file-forwarding org.gnome.TextEditor @@u %U @@&apos;" modified="2026-06-05T15:04:32.933985Z" count="1"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
 </xbel>

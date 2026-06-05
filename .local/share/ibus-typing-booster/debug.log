@@ -15,3 +15,63 @@
 2026-06-05 09:43:57,070 factory.py line 131 do_destroy INFO: Syncing user database(s)
 2026-06-05 09:44:38,106 main.py line 507 main INFO: ********** STARTING **********
 2026-06-05 09:44:38,107 itb_util_core.py line 3974 set_program_name INFO: trying to set program name <CDLL 'libc.so.6', handle 7efcf38a8550 at 0x7efcd6eef750> <ctypes.c_char_Array_16 object at 0x7efcd6f0add0> b'ibus-engine-tb'
+2026-06-05 10:26:34,953 main.py line 228 __bus_destroy_cb INFO: finalizing:)
+2026-06-05 10:26:34,953 factory.py line 131 do_destroy INFO: Syncing user database(s)
+2026-06-05 10:26:34,953 factory.py line 131 do_destroy INFO: Syncing user database(s)
+2026-06-05 15:22:51,230 main.py line 507 main INFO: ********** STARTING **********
+2026-06-05 15:22:51,232 itb_util_core.py line 3974 set_program_name INFO: trying to set program name <CDLL 'libc.so.6', handle 7ff0732ab550 at 0x7ff056883750> <ctypes.c_char_Array_16 object at 0x7ff0568a2dd0> b'ibus-engine-tb'
+2026-06-05 15:33:39,030 main.py line 228 __bus_destroy_cb INFO: finalizing:)
+2026-06-05 15:33:39,031 factory.py line 131 do_destroy INFO: Syncing user database(s)
+2026-06-05 15:33:39,031 factory.py line 131 do_destroy INFO: Syncing user database(s)
+2026-06-05 15:56:21,535 main.py line 507 main INFO: ********** STARTING **********
+2026-06-05 15:56:21,537 itb_util_core.py line 3974 set_program_name INFO: trying to set program name <CDLL 'libc.so.6', handle 7f7b3c050550 at 0x7f7b1768f750> <ctypes.c_char_Array_16 object at 0x7f7b176aedd0> b'ibus-engine-tb'
+2026-06-05 16:05:05,430 main.py line 228 __bus_destroy_cb INFO: finalizing:)
+2026-06-05 16:05:05,430 factory.py line 131 do_destroy INFO: Syncing user database(s)
+2026-06-05 16:05:05,430 factory.py line 131 do_destroy INFO: Syncing user database(s)
+2026-06-05 16:10:01,565 main.py line 507 main INFO: ********** STARTING **********
+2026-06-05 16:10:01,567 itb_util_core.py line 3974 set_program_name INFO: trying to set program name <CDLL 'libc.so.6', handle 7fa37511f550 at 0x7fa35c6cb750> <ctypes.c_char_Array_16 object at 0x7fa35c782dd0> b'ibus-engine-tb'
+2026-06-05 16:25:00,634 main.py line 228 __bus_destroy_cb INFO: finalizing:)
+2026-06-05 16:25:00,634 factory.py line 131 do_destroy INFO: Syncing user database(s)
+2026-06-05 16:25:00,634 factory.py line 131 do_destroy INFO: Syncing user database(s)
+2026-06-05 16:26:11,532 main.py line 507 main INFO: ********** STARTING **********
+2026-06-05 16:26:11,534 itb_util_core.py line 3974 set_program_name INFO: trying to set program name <CDLL 'libc.so.6', handle 7f4f6f6e7550 at 0x7f4f52c8f750> <ctypes.c_char_Array_16 object at 0x7f4f52d46dd0> b'ibus-engine-tb'
+2026-06-05 16:28:38,942 main.py line 228 __bus_destroy_cb INFO: finalizing:)
+2026-06-05 16:28:38,942 factory.py line 131 do_destroy INFO: Syncing user database(s)
+2026-06-05 16:28:38,943 factory.py line 131 do_destroy INFO: Syncing user database(s)
+2026-06-05 16:29:52,453 main.py line 507 main INFO: ********** STARTING **********
+2026-06-05 16:29:52,455 itb_util_core.py line 3974 set_program_name INFO: trying to set program name <CDLL 'libc.so.6', handle 7fa9d70e2550 at 0x7fa9ba77b750> <ctypes.c_char_Array_16 object at 0x7fa9ba83edd0> b'ibus-engine-tb'
+2026-06-05 16:30:01,646 main.py line 228 __bus_destroy_cb INFO: finalizing:)
+2026-06-05 16:30:01,646 factory.py line 131 do_destroy INFO: Syncing user database(s)
+2026-06-05 16:30:01,647 factory.py line 131 do_destroy INFO: Syncing user database(s)
+2026-06-05 16:33:56,496 main.py line 507 main INFO: ********** STARTING **********
+2026-06-05 16:33:56,498 itb_util_core.py line 3974 set_program_name INFO: trying to set program name <CDLL 'libc.so.6', handle 7fa1a367e550 at 0x7fa186d1f750> <ctypes.c_char_Array_16 object at 0x7fa186de6dd0> b'ibus-engine-tb'
+2026-06-05 16:35:17,063 main.py line 228 __bus_destroy_cb INFO: finalizing:)
+2026-06-05 16:35:17,063 factory.py line 131 do_destroy INFO: Syncing user database(s)
+2026-06-05 16:35:17,063 factory.py line 131 do_destroy INFO: Syncing user database(s)
+2026-06-05 16:35:57,312 main.py line 507 main INFO: ********** STARTING **********
+2026-06-05 16:35:57,313 itb_util_core.py line 3974 set_program_name INFO: trying to set program name <CDLL 'libc.so.6', handle 7f769ca50550 at 0x7f768408b750> <ctypes.c_char_Array_16 object at 0x7f76840b2dd0> b'ibus-engine-tb'
+2026-06-05 16:39:35,270 main.py line 228 __bus_destroy_cb INFO: finalizing:)
+2026-06-05 16:39:35,270 factory.py line 131 do_destroy INFO: Syncing user database(s)
+2026-06-05 16:39:35,270 factory.py line 131 do_destroy INFO: Syncing user database(s)
+2026-06-05 16:40:54,304 main.py line 507 main INFO: ********** STARTING **********
+2026-06-05 16:40:54,306 itb_util_core.py line 3974 set_program_name INFO: trying to set program name <CDLL 'libc.so.6', handle 7fce21ba6550 at 0x7fce0924b750> <ctypes.c_char_Array_16 object at 0x7fce09312dd0> b'ibus-engine-tb'
+2026-06-05 16:41:02,436 main.py line 228 __bus_destroy_cb INFO: finalizing:)
+2026-06-05 16:41:02,437 factory.py line 131 do_destroy INFO: Syncing user database(s)
+2026-06-05 16:41:02,437 factory.py line 131 do_destroy INFO: Syncing user database(s)
+2026-06-05 16:41:43,353 main.py line 507 main INFO: ********** STARTING **********
+2026-06-05 16:41:43,355 itb_util_core.py line 3974 set_program_name INFO: trying to set program name <CDLL 'libc.so.6', handle 7f53cc86e550 at 0x7f53a7e77750> <ctypes.c_char_Array_16 object at 0x7f53a7f3edd0> b'ibus-engine-tb'
+2026-06-05 16:41:51,873 main.py line 228 __bus_destroy_cb INFO: finalizing:)
+2026-06-05 16:41:51,873 factory.py line 131 do_destroy INFO: Syncing user database(s)
+2026-06-05 16:41:51,873 factory.py line 131 do_destroy INFO: Syncing user database(s)
+2026-06-05 16:51:57,442 main.py line 507 main INFO: ********** STARTING **********
+2026-06-05 16:51:57,444 itb_util_core.py line 3974 set_program_name INFO: trying to set program name <CDLL 'libc.so.6', handle 7f0c04cc0550 at 0x7f0bec2fb750> <ctypes.c_char_Array_16 object at 0x7f0bec322dd0> b'ibus-engine-tb'
+2026-06-05 16:52:26,605 main.py line 228 __bus_destroy_cb INFO: finalizing:)
+2026-06-05 16:52:26,605 factory.py line 131 do_destroy INFO: Syncing user database(s)
+2026-06-05 16:52:26,605 factory.py line 131 do_destroy INFO: Syncing user database(s)
+2026-06-05 16:54:42,105 main.py line 507 main INFO: ********** STARTING **********
+2026-06-05 16:54:42,109 itb_util_core.py line 3974 set_program_name INFO: trying to set program name <CDLL 'libc.so.6', handle 7fbe49ee6550 at 0x7fbe31587750> <ctypes.c_char_Array_16 object at 0x7fbe31656dd0> b'ibus-engine-tb'
+2026-06-05 16:55:04,898 main.py line 228 __bus_destroy_cb INFO: finalizing:)
+2026-06-05 16:55:04,899 factory.py line 131 do_destroy INFO: Syncing user database(s)
+2026-06-05 16:55:04,899 factory.py line 131 do_destroy INFO: Syncing user database(s)
+2026-06-05 16:56:34,124 main.py line 507 main INFO: ********** STARTING **********
+2026-06-05 16:56:34,128 itb_util_core.py line 3974 set_program_name INFO: trying to set program name <CDLL 'libc.so.6', handle 7f0bb0de1550 at 0x7f0b9842b750> <ctypes.c_char_Array_16 object at 0x7f0b98446dd0> b'ibus-engine-tb'
