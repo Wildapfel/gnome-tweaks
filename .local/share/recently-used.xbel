@@ -197,12 +197,12 @@
       </metadata>
     </info>
   </bookmark>
-  <bookmark href="file:///var/home/max-inspiron/.local/share/backgrounds/2026-06-04-10-13-41-background" added="2026-06-05T07:02:53.657059Z" modified="2026-06-05T07:02:53.657063Z" visited="2026-06-05T07:02:53.657060Z">
+  <bookmark href="file:///var/home/max-inspiron/.local/share/backgrounds/2026-06-04-10-13-41-background" added="2026-06-05T07:02:53.657059Z" modified="2026-06-05T07:56:03.606750Z" visited="2026-06-05T07:02:53.657060Z">
     <info>
       <metadata owner="http://freedesktop.org">
         <mime:mime-type type="image/jpeg"/>
         <bookmark:applications>
-          <bookmark:application name="org.gnome.Nautilus" exec="&apos;/usr/bin/flatpak run --branch=stable --arch=x86_64 --command=loupe --file-forwarding org.gnome.Loupe @@u %U @@&apos;" modified="2026-06-05T07:02:53.657061Z" count="1"/>
+          <bookmark:application name="org.gnome.Nautilus" exec="&apos;/usr/bin/flatpak run --branch=stable --arch=x86_64 --command=loupe --file-forwarding org.gnome.Loupe @@u %U @@&apos;" modified="2026-06-05T07:56:03.606749Z" count="6"/>
         </bookmark:applications>
       </metadata>
     </info>
@@ -213,6 +213,16 @@
         <mime:mime-type type="image/jpeg"/>
         <bookmark:applications>
           <bookmark:application name="org.gnome.Nautilus" exec="&apos;/usr/bin/flatpak run --branch=stable --arch=x86_64 --command=loupe --file-forwarding org.gnome.Loupe @@u %U @@&apos;" modified="2026-06-05T07:02:56.167358Z" count="1"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="file:///var/home/max-inspiron/Pictures/wallpaper/beach_aerial_turquiose.jpg" added="2026-06-05T07:47:47.908286Z" modified="2026-06-05T07:47:47.908289Z" visited="2026-06-05T07:47:47.908287Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="image/jpeg"/>
+        <bookmark:applications>
+          <bookmark:application name="xdg-desktop-portal-gnome" exec="&apos;xdg-desktop-portal-gnome %u&apos;" modified="2026-06-05T07:47:47.908288Z" count="1"/>
         </bookmark:applications>
       </metadata>
     </info>

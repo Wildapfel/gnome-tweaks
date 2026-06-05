@@ -1,6 +1,6 @@
 [stream-properties]
-Input/Audio:application.name:gnome-shell={"volume":1.000000, "mute":false, "channelMap":["MONO"], "channelVolumes":[1.000000]}
-Output/Audio:application.name:Firefox={"volume":1.000000, "mute":false, "channelMap":["FL", "FR"], "channelVolumes":[0.529996, 0.529996]}
+Input/Audio:application.name:gnome-shell={"mute":false, "channelVolumes":[1.000000], "volume":1.000000, "channelMap":["MONO"]}
+Output/Audio:application.name:Firefox={"mute":false, "channelVolumes":[0.249998, 0.249998], "volume":1.000000, "channelMap":["FL", "FR"]}
 Output/Audio:media.role:Notification={"volume":1.000000, "mute":false, "channelMap":["FL", "FR"], "channelVolumes":[1.000000, 1.000000]}
 Output/Audio:application.name:eSpeak={"volume":1.000000, "mute":false, "channelMap":["MONO"], "channelVolumes":[1.000000]}
 Output/Audio:application.name:speech-dispatcher-dummy={"volume":1.000000, "mute":false, "channelMap":["MONO"], "channelVolumes":[1.000000]}

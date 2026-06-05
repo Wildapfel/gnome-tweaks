@@ -1,29 +1,28 @@
 <?xml version="1.0"?>
 <application-state>
   <context id="">
-    <application id="org.gnome.Settings.desktop" score="15" last-seen="1780644355"/>
-    <application id="org.mozilla.firefox.desktop" score="1011" last-seen="1780644953"/>
+    <application id="org.gnome.Yelp.desktop" score="0" last-seen="1780583898"/>
+    <application id="org.mozilla.firefox.desktop" score="1024" last-seen="1780645755"/>
     <application id="org.gnome.TextEditor.desktop" score="7" last-seen="1780641822"/>
-    <application id="org.gnome.Loupe.desktop" score="0" last-seen="1780642980"/>
     <application id="org.gnome.Software.desktop" score="36" last-seen="1780584233"/>
-    <application id="org.gnome.SystemMonitor.desktop" score="0" last-seen="1780584337"/>
     <application id="org.gnome.Shell.Extensions.desktop" score="238" last-seen="1780583669"/>
+    <application id="org.gnome.SystemMonitor.desktop" score="0" last-seen="1780584337"/>
     <application id="org.gnome.Logs.desktop" score="0" last-seen="1780566369"/>
+    <application id="org.gnome.Loupe.desktop" score="0" last-seen="1780646168"/>
     <application id="org.gnome.Papers.desktop" score="0" last-seen="1780584022"/>
-    <application id="org.gnome.clocks.desktop" score="1" last-seen="1780583847"/>
-    <application id="com.mattjakeman.ExtensionManager.desktop" score="50" last-seen="1780583671"/>
-    <application id="com.desktop.ding.desktop" score="0" last-seen="1780638125"/>
-    <application id="org.gnome.Nautilus.desktop" score="261" last-seen="1780644961"/>
-    <application id="gnome-sound-panel.desktop" score="0" last-seen="0"/>
-    <application id="org.gnome.Tour.desktop" score="0" last-seen="1780584002"/>
     <application id="org.gnome.Calendar.desktop" score="0" last-seen="1780567042"/>
+    <application id="com.desktop.ding.desktop" score="0" last-seen="1780638125"/>
+    <application id="org.gnome.Nautilus.desktop" score="266" last-seen="1780646171"/>
+    <application id="com.mattjakeman.ExtensionManager.desktop" score="50" last-seen="1780583671"/>
+    <application id="org.gnome.Tour.desktop" score="0" last-seen="1780584002"/>
+    <application id="org.gnome.clocks.desktop" score="1" last-seen="1780583847"/>
     <application id="org.gnome.baobab.desktop" score="3" last-seen="1780633940"/>
     <application id="org.gnome.DiskUtility.desktop" score="0" last-seen="1780583947"/>
-    <application id="org.gnome.Ptyxis.desktop" score="716" last-seen="1780644961"/>
+    <application id="org.gnome.Ptyxis.desktop" score="809" last-seen="1780646171"/>
     <application id="org.fedoraproject.MediaWriter.desktop" score="2" last-seen="1780584379"/>
     <application id="org.gnome.Snapshot.desktop" score="1" last-seen="1780584055"/>
     <application id="org.gnome.Extensions.desktop" score="0" last-seen="1780556729"/>
-    <application id="org.gnome.Yelp.desktop" score="0" last-seen="1780583898"/>
+    <application id="org.gnome.Settings.desktop" score="16" last-seen="1780645669"/>
     <application id="org.gnome.Connections.desktop" score="3" last-seen="1780584108"/>
   </context>
 </application-state>
