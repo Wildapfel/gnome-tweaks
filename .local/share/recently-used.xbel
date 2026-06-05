@@ -66,12 +66,12 @@
       </metadata>
     </info>
   </bookmark>
-  <bookmark href="file:///var/home/max-inspiron/.config/background" added="2026-06-04T08:08:49.538319Z" modified="2026-06-05T04:27:44.974644Z" visited="2026-06-04T08:08:49.538319Z">
+  <bookmark href="file:///var/home/max-inspiron/.config/background" added="2026-06-04T08:08:49.538319Z" modified="2026-06-05T06:52:20.587683Z" visited="2026-06-04T08:08:49.538319Z">
     <info>
       <metadata owner="http://freedesktop.org">
         <mime:mime-type type="image/jpeg"/>
         <bookmark:applications>
-          <bookmark:application name="org.gnome.Nautilus" exec="&apos;/usr/bin/flatpak run --branch=stable --arch=x86_64 --command=loupe --file-forwarding org.gnome.Loupe @@u %U @@&apos;" modified="2026-06-05T04:27:44.974642Z" count="3"/>
+          <bookmark:application name="org.gnome.Nautilus" exec="&apos;/usr/bin/flatpak run --branch=stable --arch=x86_64 --command=loupe --file-forwarding org.gnome.Loupe @@u %U @@&apos;" modified="2026-06-05T06:52:20.587682Z" count="4"/>
         </bookmark:applications>
       </metadata>
     </info>
@@ -153,6 +153,66 @@
         <mime:mime-type type="image/jpeg"/>
         <bookmark:applications>
           <bookmark:application name="org.gnome.Nautilus" exec="&apos;/usr/bin/flatpak run --branch=stable --arch=x86_64 --command=loupe --file-forwarding org.gnome.Loupe @@u %U @@&apos;" modified="2026-06-05T04:30:38.555798Z" count="1"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="file:///var/home/max-inspiron/.bash_history" added="2026-06-05T06:43:17.151691Z" modified="2026-06-05T06:43:17.151701Z" visited="2026-06-05T06:43:17.151692Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="text/plain"/>
+        <bookmark:applications>
+          <bookmark:application name="org.gnome.Nautilus" exec="&apos;/usr/bin/flatpak run --branch=stable --arch=x86_64 --command=gnome-text-editor --file-forwarding org.gnome.TextEditor @@u %U @@&apos;" modified="2026-06-05T06:43:17.151694Z" count="1"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="file:///var/home/max-inspiron/.bash_logout" added="2026-06-05T06:43:28.027923Z" modified="2026-06-05T06:43:28.027927Z" visited="2026-06-05T06:43:28.027924Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="text/plain"/>
+        <bookmark:applications>
+          <bookmark:application name="org.gnome.Nautilus" exec="&apos;/usr/bin/flatpak run --branch=stable --arch=x86_64 --command=gnome-text-editor --file-forwarding org.gnome.TextEditor @@u %U @@&apos;" modified="2026-06-05T06:43:28.027925Z" count="1"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="file:///var/home/max-inspiron/.bash_profile" added="2026-06-05T06:43:31.078107Z" modified="2026-06-05T06:43:31.078115Z" visited="2026-06-05T06:43:31.078108Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="text/plain"/>
+        <bookmark:applications>
+          <bookmark:application name="org.gnome.Nautilus" exec="&apos;/usr/bin/flatpak run --branch=stable --arch=x86_64 --command=gnome-text-editor --file-forwarding org.gnome.TextEditor @@u %U @@&apos;" modified="2026-06-05T06:43:31.078110Z" count="1"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="file:///var/home/max-inspiron/.bashrc" added="2026-06-05T06:43:36.914190Z" modified="2026-06-05T06:43:36.914194Z" visited="2026-06-05T06:43:36.914190Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="text/plain"/>
+        <bookmark:applications>
+          <bookmark:application name="org.gnome.Nautilus" exec="&apos;/usr/bin/flatpak run --branch=stable --arch=x86_64 --command=gnome-text-editor --file-forwarding org.gnome.TextEditor @@u %U @@&apos;" modified="2026-06-05T06:43:36.914191Z" count="1"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="file:///var/home/max-inspiron/.local/share/backgrounds/2026-06-04-10-13-41-background" added="2026-06-05T07:02:53.657059Z" modified="2026-06-05T07:02:53.657063Z" visited="2026-06-05T07:02:53.657060Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="image/jpeg"/>
+        <bookmark:applications>
+          <bookmark:application name="org.gnome.Nautilus" exec="&apos;/usr/bin/flatpak run --branch=stable --arch=x86_64 --command=loupe --file-forwarding org.gnome.Loupe @@u %U @@&apos;" modified="2026-06-05T07:02:53.657061Z" count="1"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="file:///var/home/max-inspiron/.local/share/backgrounds/2026-06-04-16-27-01-beach-aerial-view-3840x2160-60.jpg" added="2026-06-05T07:02:56.167356Z" modified="2026-06-05T07:02:56.167361Z" visited="2026-06-05T07:02:56.167357Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="image/jpeg"/>
+        <bookmark:applications>
+          <bookmark:application name="org.gnome.Nautilus" exec="&apos;/usr/bin/flatpak run --branch=stable --arch=x86_64 --command=loupe --file-forwarding org.gnome.Loupe @@u %U @@&apos;" modified="2026-06-05T07:02:56.167358Z" count="1"/>
         </bookmark:applications>
       </metadata>
     </info>
