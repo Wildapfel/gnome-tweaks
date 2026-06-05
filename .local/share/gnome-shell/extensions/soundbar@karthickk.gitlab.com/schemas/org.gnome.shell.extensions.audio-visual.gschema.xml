@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist>
+  <schema id="org.gnome.shell.extensions.audio-visual" path="/org/gnome/shell/extensions/audio-visual/">
+    <key name="audio-backend" type="s">
+      <default>'gstreamer'</default>
+      <summary>Audio backend</summary>
+      <description>Audio capture backend: gstreamer (built-in) or cava (external)</description>
+    </key>
+    <key name="bar-count" type="i">
+      <default>32</default>
+      <summary>Number of bars</summary>
+      <description>The number of visualizer bars to display</description>
+      <range min="8" max="64"/>
+    </key>
+    <key name="bar-color" type="s">
+      <default>'rgba(192, 191, 188, 1.00)'</default>
+      <description>Color of the visualizer bars in CSS format</description>
+    </key>
+    <key name="use-gradient" type="b">
+      <default>true</default>
+      <summary>Use gradient colors</summary>
+      <description>Alternate between two colors to create a gradient effect</description>
+    </key>
+    <key name="gradient-color" type="s">
+      <default>'rgba(192, 28, 40, 1.00)'</default>
+      <summary>Gradient color</summary>
+      <description>Second color for gradient effect in CSS format</description>
+    </key>
+    <key name="max-height" type="i">
+      <default>32</default>
+      <summary>Maximum height</summary>
+      <description>Maximum height of the bars in pixels</description>
+      <range min="10" max="50"/>
+    </key>
+    <key name="hide-when-silent" type="b">
+      <default>true</default>
+      <summary>Hide when silent</summary>
+      <description>Hide the visualizer when there is no audio playback</description>
+    </key>
+    <key name="sensitivity" type="i">
+      <default>125</default>
+      <summary>Sensitivity</summary>
+      <description>Audio sensitivity/gain level</description>
+      <range min="50" max="200"/>
+    </key>
+    <key name="framerate" type="i">
+      <default>20</default>
+      <summary>Visualizer framerate</summary>
+      <description>Frames per second for CAVA output</description>
+      <range min="10" max="60"/>
+    </key>
+    <key name="alpha-rise" type="d">
+      <default>0.55</default>
+      <summary>Rise smoothing factor</summary>
+      <description>Exponential smoothing coefficient when bars are increasing (0.05–1.0)</description>
+    </key>
+    <key name="alpha-fall" type="d">
+      <default>1.0</default>
+      <summary>Fall smoothing factor</summary>
+      <description>Exponential smoothing coefficient when bars are decreasing (0.5–1.0)</description>
+    </key>
+    <key name="noise-floor" type="i">
+      <default>120</default>
+      <summary>Noise floor</summary>
+      <description>Amplitude below which a frame is treated as silence</description>
+      <range min="20" max="1000"/>
+    </key>
+    <key name="silence-zero-frames" type="i">
+      <default>3</default>
+      <summary>Silence snap frames</summary>
+      <description>Number of consecutive silent frames before snapping bars to baseline</description>
+      <range min="1" max="12"/>
+    </key>
+    <key name="panel-position" type="s">
+      <default>'center'</default>
+      <summary>Panel position</summary>
+      <description>Position in the top panel: left, center, or right</description>
+    </key>
+    <key name="position-index" type="i">
+      <default>5</default>
+      <summary>Position index</summary>
+      <description>Order relative to other elements in the panel</description>
+      <range min="-10" max="10"/>
+    </key>
+    <key name="bottom-padding" type="i">
+      <default>4</default>
+      <summary>Bottom padding</summary>
+      <description>Padding from the bottom of the panel in pixels</description>
+      <range min="0" max="15"/>
+    </key>
+    <key name="show-pill-background" type="b">
+      <default>true</default>
+      <summary>Show pill background</summary>
+      <description>Show a rounded pill background behind the visualizer</description>
+    </key>
+    <key name="pill-color" type="s">
+      <default>'rgba(61, 56, 70, 1.00)'</default>
+      <summary>Pill background color</summary>
+      <description>Color of the pill background in CSS format</description>
+    </key>
+    <key name="visualization-mode" type="s">
+      <default>'pulse'</default>
+      <summary>Visualization mode</summary>
+      <description>Display mode: bars, led-bars, vu-meter, or pulse</description>
+    </key>
+    <key name="meter-size" type="i">
+      <default>40</default>
+      <summary>VU meter size</summary>
+      <description>Pixel width of each VU meter gauge</description>
+      <range min="24" max="64"/>
+    </key>
+    <key name="needle-color" type="s">
+      <default>'rgba(255, 50, 50, 0.95)'</default>
+      <summary>Needle color</summary>
+      <description>Color of the VU meter needle in CSS format</description>
+    </key>
+    <key name="meter-bg-color" type="s">
+      <default>'rgba(255, 255, 245, 0.95)'</default>
+      <summary>Meter background color</summary>
+      <description>Background color of the VU meter face in CSS format</description>
+    </key>
+    <key name="meter-sensitivity" type="d">
+      <default>0.6</default>
+      <summary>Meter sensitivity</summary>
+      <description>Gain multiplier for VU meter needle level (0.5–5.0)</description>
+    </key>
+    <key name="use-vertical-gradient" type="b">
+      <default>false</default>
+      <summary>Use vertical gradient</summary>
+      <description>Apply a vertical gradient within each bar from bottom color to top color</description>
+    </key>
+    <key name="vertical-gradient-color" type="s">
+      <default>'rgba(0, 255, 100, 0.9)'</default>
+      <summary>Vertical gradient color</summary>
+      <description>Top color for vertical gradient within each bar in CSS format</description>
+    </key>
+    <key name="led-segment-count" type="i">
+      <default>8</default>
+      <summary>LED segment count</summary>
+      <description>Number of LED segments per bar</description>
+      <range min="6" max="24"/>
+    </key>
+    <key name="led-gap" type="i">
+      <default>2</default>
+      <summary>LED segment gap</summary>
+      <description>Gap between LED segments in pixels</description>
+      <range min="1" max="3"/>
+    </key>
+    <key name="led-color-low" type="s">
+      <default>'rgba(222, 221, 218, 1.00)'</default>
+      <summary>LED low zone color</summary>
+      <description>Color for the lower zone of LED bars</description>
+    </key>
+    <key name="led-color-mid" type="s">
+      <default>'rgba(222, 221, 218, 1.00)'</default>
+      <summary>LED mid zone color</summary>
+      <description>Color for the middle zone of LED bars</description>
+    </key>
+    <key name="led-color-high" type="s">
+      <default>'rgba(255, 30, 30, 0.95)'</default>
+      <summary>LED high zone color</summary>
+      <description>Color for the high/peak zone of LED bars</description>
+    </key>
+    <key name="led-mid-threshold" type="d">
+      <default>0.6</default>
+      <summary>LED mid zone threshold</summary>
+      <description>Fraction of bar height where mid zone starts (0.1–0.9)</description>
+    </key>
+    <key name="led-high-threshold" type="d">
+      <default>0.85</default>
+      <summary>LED high zone threshold</summary>
+      <description>Fraction of bar height where high/peak zone starts (0.1–0.95)</description>
+    </key>
+    <key name="pulse-bar-count" type="i">
+      <default>11</default>
+      <summary>Pulse bar count</summary>
+      <description>Number of bars in Pulse mode</description>
+      <range min="2" max="16"/>
+    </key>
+    <key name="pulse-color" type="s">
+      <default>'rgba(222, 221, 218, 1.00)'</default>
+      <summary>Pulse bar color</summary>
+      <description>Color of the pulse bars in CSS format</description>
+    </key>
+    <key name="pulse-glow" type="b">
+      <default>true</default>
+      <summary>Pulse glow effect</summary>
+      <description>Draw a soft glow halo behind each pulse bar</description>
+    </key>
+    <key name="show-now-playing" type="b">
+      <default>true</default>
+      <summary>Show now playing</summary>
+      <description>Display track info and album art next to the visualizer</description>
+    </key>
+    <key name="show-album-art" type="b">
+      <default>true</default>
+      <summary>Show album art</summary>
+      <description>Show album art thumbnail in now-playing display</description>
+    </key>
+    <key name="show-track-title" type="b">
+      <default>true</default>
+      <summary>Show track title</summary>
+      <description>Show track title text in now-playing display</description>
+    </key>
+    <key name="now-playing-max-width" type="i">
+      <default>120</default>
+      <summary>Now playing max width</summary>
+      <description>Maximum width for track title in pixels</description>
+      <range min="80" max="300"/>
+    </key>
+    <key name="now-playing-position" type="s">
+      <default>'left'</default>
+      <summary>Now playing position</summary>
+      <description>Position of now-playing info relative to visualizer: left or right</description>
+    </key>
+  </schema>
+</schemalist>
